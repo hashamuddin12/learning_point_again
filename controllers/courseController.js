@@ -135,12 +135,26 @@ const fetchCourseByStudent = async (req, res) => {
   try {
     const fetchCourses = await applyCourse
       .find({ studentId: req.user._id })
+      .select({
+        teacherId: 0,
+        studentId: 0,
+        price: 0,
+        createdAt: 0,
+        updatedAt: 0,
+        _id: 0,
+      })
       .populate("courseId");
+
+    let finalResponse = [];
+    for (var i = 0; i < fetchCourses.length; i++) {
+      console.log(fetchCourses[i].courseId);
+      finalResponse.push(fetchCourses[i].courseId);
+    }
 
     return res.status(200).send({
       success: true,
       message: "Fetch All Courses Successfully",
-      data: fetchCourses,
+      data: finalResponse,
     });
   } catch (e) {
     console.log(e);
