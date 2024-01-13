@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 
 mongoose
   .connect(
-    `mongodb+srv://uhasham71:G3yAcoQMgvTx5bZg@cluster0.0b8yos2.mongodb.net/?retryWrites=true&w=majoritys`
+    `mongodb+srv://uhasham71:G3yAcoQMgvTx5bZg@cluster0.0b8yos2.mongodb.net/?retryWrites=true`
   )
   .then(() => {
     console.log("Database Connected Successfully");
